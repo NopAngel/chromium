@@ -8374,6 +8374,11 @@
     "expiry_milestone": 148
   },
   {
+    "name": "session-restore-after-crash",
+    "owners": ["aishwaryarj@google.com", "zheliooo@google.com", "clank-large-form-factors@google.com"],
+    "expiry_milestone": 170
+  },
+  {
     "name": "set-market-url-for-testing",
     "owners": [ "//chrome/android/java/src/org/chromium/chrome/browser/omaha/OWNERS" ],
     // This is required by test teams to verify functionality on devices which
@@ -8873,6 +8878,11 @@
     "name": "tab-group-color-on-surface",
     "owners": [ "bling-meridian@google.com", "bling-flags@google.com" ],
     "expiry_milestone": 150
+  },
+  {
+    "name": "tab-group-color-refresh",
+    "owners": [ "dominicaustria@google.com", "top-chrome-desktop-ui@google.com" ],
+    "expiry_milestone": 160
   },
   {
     "name": "tab-group-home",

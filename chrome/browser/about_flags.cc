@@ -7276,6 +7276,11 @@ const FeatureEntry kFeatureEntries[] = {
      flag_descriptions::kSearchInCCTAlternateTapHandlingDescription, kOsAndroid,
      FEATURE_VALUE_TYPE(chrome::android::kSearchInCCTAlternateTapHandling)},
 
+    {"session-restore-after-crash",
+     flag_descriptions::kSessionRestoreAfterCrashName,
+     flag_descriptions::kSessionRestoreAfterCrashDescription, kOsAndroid,
+     FEATURE_VALUE_TYPE(chrome::android::kSessionRestoreAfterCrash)},
+
     {"settings-multi-column", flag_descriptions::kSettingsMultiColumnName,
      flag_descriptions::kSettingsMultiColumnDescription, kOsAndroid,
      FEATURE_VALUE_TYPE(chrome::android::kSettingsMultiColumn)},
@@ -9510,6 +9515,10 @@ const FeatureEntry kFeatureEntries[] = {
     {"toolbar-glow-up", flag_descriptions::kToolbarGlowUpName,
      flag_descriptions::kToolbarGlowUpDescription, kOsDesktop,
      FEATURE_VALUE_TYPE(features::kToolbarGlowUp)},
+
+    {"tab-group-color-refresh", flag_descriptions::kTabGroupColorRefreshName,
+     flag_descriptions::kTabGroupColorRefreshDescription, kOsDesktop,
+     FEATURE_VALUE_TYPE(features::kTabGroupColorRefresh)},
 
     {"menu-simplification", flag_descriptions::kMenuSimplificationName,
      flag_descriptions::kMenuSimplificationDescription, kOsDesktop,

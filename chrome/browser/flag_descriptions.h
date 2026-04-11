@@ -1285,6 +1285,13 @@ inline constexpr char kSearchInCCTAlternateTapHandlingName[] =
 inline constexpr char kSearchInCCTAlternateTapHandlingDescription[] =
     "Search in Chrome Custom Tabs Alternate Tap Handling";
 
+inline constexpr char kSessionRestoreAfterCrashName[] =
+    "Session Restore After Crash";
+inline constexpr char kSessionRestoreAfterCrashDescription[] =
+    "Allows users to recover their entire multi-window session after a crash. "
+    "When enabled, Chrome provides a prompt to restore windows and tabs "
+    "sequentially and maintains window sizes where supported.";
+
 inline constexpr char kSettingsMultiColumnName[] =
     "Use MultiColumn mode in Chrome settings";
 inline constexpr char kSettingsMultiColumnDescription[] =
@@ -4057,6 +4064,10 @@ inline constexpr char kSidePanelFlyoverAnimationDescription[] =
     "panels, reducing jank on most platforms. When enabled, the animating "
     "elements will appear to float over the contents, which resize at the "
     "beginning or end of the animation.";
+
+inline constexpr char kTabGroupColorRefreshName[] = "Tab Group Color Refresh";
+inline constexpr char kTabGroupColorRefreshDescription[] =
+    "Update the color selection for tab groups.";
 
 inline constexpr char kTabGroupsFocusingName[] = "Tab Groups Focusing";
 inline constexpr char kTabGroupsFocusingDescription[] =

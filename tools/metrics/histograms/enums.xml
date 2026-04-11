@@ -9405,6 +9405,7 @@ from previous Chrome versions.
   <int value="-1553422387" label="DocumentPatching:enabled"/>
   <int value="-1553280810" label="PromoBrowserCommands:enabled"/>
   <int value="-1552898031" label="SingleTabMode:enabled"/>
+  <int value="-1552665748" label="SessionRestoreAfterCrash:disabled"/>
   <int value="-1551839190"
       label="EarlyDocumentSwapForBackForwardTransitions:enabled"/>
   <int value="-1551497821"
@@ -14007,6 +14008,7 @@ from previous Chrome versions.
   <int value="-22506564" label="OptimizeDataUrls:disabled"/>
   <int value="-22311932"
       label="QuickIntensiveWakeUpThrottlingAfterLoading:disabled"/>
+  <int value="-21840927" label="TabGroupColorRefresh:disabled"/>
   <int value="-21771427" label="HistoryClustersPersistedClusters:disabled"/>
   <int value="-21693450" label="RetryGetVideoCaptureDeviceInfos:disabled"/>
   <int value="-20597579" label="UseMultiloginEndpoint:enabled"/>
@@ -18454,6 +18456,7 @@ from previous Chrome versions.
   <int value="1458475849" label="D3D11VideoDecoder:disabled"/>
   <int value="1458583431" label="arc-use-auth-endpoint"/>
   <int value="1459529277" label="disable-text-input-focus-manager"/>
+  <int value="1459601920" label="SessionRestoreAfterCrash:enabled"/>
   <int value="1459803015" label="WebRtcEnableCaptureMultiChannelApm:enabled"/>
   <int value="1459850158" label="OmniboxContextualSuggestions:disabled"/>
   <int value="1460028797"
@@ -20044,6 +20047,7 @@ from previous Chrome versions.
   <int value="1982280338" label="IOSPromoAddressBubble:disabled"/>
   <int value="1982520858" label="XplatSyncedSetup:enabled"/>
   <int value="1982576646" label="PanelSelfRefresh2:disabled"/>
+  <int value="1983635890" label="TabGroupColorRefresh:enabled"/>
   <int value="1984029104" label="test-third-party-cookie-phaseout:enabled"/>
   <int value="1985040337" label="EnableFastTouchpadClick:enabled"/>
   <int value="1985567360" label="VulkanFromANGLE:enabled"/>
@@ -25849,6 +25853,7 @@ Called by update_net_error_codes.py.-->
   <int value="12" label="OS_REPORTS_CAPTIVE_PORTAL"/>
   <int value="13" label="SHOW_BLOCKED_INTERCEPTION_INTERSTITIAL"/>
   <int value="14" label="SHOW_LEGACY_TLS_INTERSTITIAL"/>
+  <int value="15" label="SHOW_LOCAL_SELF_SIGNED_INTERSTITIAL"/>
 </enum>
 
 <enum name="SSLErrorTypes">

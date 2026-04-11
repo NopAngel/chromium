@@ -569,13 +569,6 @@ bool ReadAnythingAppController::IsUpdateProcessingPaused() const {
     return true;
   }
 
-  // Don't trigger distillation if reading mode isn't shown.
-  if (IsImmersiveEnabled() &&
-      model_.active_presentation_state() ==
-          read_anything::mojom::ReadAnythingPresentationState::kInactive) {
-    return true;
-  }
-
   // Update processing should also be considered paused when Readability
   // is in the process of distilling the page.
   if (model_.is_readability_next_distillation_method() &&
@@ -866,6 +859,10 @@ void ReadAnythingAppController::RecordDistillationSuccess() {
 }
 
 void ReadAnythingAppController::RecordNumSelections() {
+  if (IsHidden()) {
+    return;
+  }
+
   ukm::builders::Accessibility_ReadAnything_EmptyState(model_.GetUkmSourceId())
       .SetTotalNumSelections(model_.GetNumSelections())
       .Record(ukm_recorder_.get());
@@ -873,6 +870,10 @@ void ReadAnythingAppController::RecordNumSelections() {
 }
 
 void ReadAnythingAppController::RecordEstimatedWordsSeen() {
+  if (IsHidden()) {
+    return;
+  }
+
   VLOG(1) << "Words seen: " << model_.words_seen();
   base::UmaHistogramCustomCounts(kWordsSeenHistogramName, model_.words_seen(),
                                  1, kMaxWordsConsumed, kWordsConsumedBuckets);
@@ -880,6 +881,10 @@ void ReadAnythingAppController::RecordEstimatedWordsSeen() {
 }
 
 void ReadAnythingAppController::RecordEstimatedWordsHeard() {
+  if (IsHidden()) {
+    return;
+  }
+
   VLOG(1) << "Words heard: " << model_.words_heard();
   base::UmaHistogramCustomCounts(kWordsHeardHistogramName, model_.words_heard(),
                                  1, kMaxWordsConsumed, kWordsConsumedBuckets);
@@ -1083,7 +1088,7 @@ void ReadAnythingAppController::OnAXTreeDistilled(
   // AXNode's language code is BCP 47. Only the base language is needed to
   // record the metric.
   std::string language = model_.GetActiveTree()->root()->GetLanguage();
-  if (!language.empty()) {
+  if (!language.empty() && !IsHidden()) {
     base::UmaHistogramSparse(
         "Accessibility.ReadAnything.Language",
         base::HashMetricName(language::ExtractBaseLanguage(language)));
@@ -1179,6 +1184,9 @@ void ReadAnythingAppController::DrawEmptyState() {
 }
 
 void ReadAnythingAppController::LogEmptyState() {
+  if (IsHidden()) {
+    return;
+  }
   base::UmaHistogramEnumeration(ReadAnythingAppModel::kEmptyStateHistogramName,
                                 ReadAnythingAppModel::EmptyState::kShown);
 }
@@ -2724,7 +2732,7 @@ void ReadAnythingAppController::StartLineFocusSession() {
 
 void ReadAnythingAppController::LogLineFocusSession() {
   if (IsLineFocusEnabled() &&
-      model_.line_focus_session_start_time().has_value()) {
+      model_.line_focus_session_start_time().has_value() && !IsHidden()) {
     base::UmaHistogramLongTimes(
         "Accessibility.ReadAnything.LineFocusSessionLength",
         base::TimeTicks::Now() -
@@ -2949,4 +2957,10 @@ void ReadAnythingAppController::ApplyAccessibilityUpdatesForReadabilityLinks(
   if (didProcessAnchors) {
     ExecuteJavaScript("chrome.readingMode.onAnchorsReadyForReadability();");
   }
+}
+
+bool ReadAnythingAppController::IsHidden() {
+  return IsImmersiveEnabled() &&
+         model_.active_presentation_state() ==
+             read_anything::mojom::ReadAnythingPresentationState::kInactive;
 }
